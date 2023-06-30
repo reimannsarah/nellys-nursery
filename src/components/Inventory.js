@@ -7,7 +7,7 @@ function Inventory(props) {
   const currentlyVisibleState = 
   props.inventory.map((plant) => 
   <div key={plant.id}>
-    <Plant whenItemClicked={props.onItemSelect}
+    <Plant whenPlantClicked={props.onPlantSelect}
       name={plant.name}
       colloquial={plant.colloquial}
       palletQuantity={plant.palletQuantity}
@@ -28,7 +28,7 @@ function Inventory(props) {
 
 Inventory.propTypes = {
   inventory: PropTypes.array,
-  onItemSelect: PropTypes.func
+  onPlantSelect: PropTypes.func
 }
 
 export default Inventory;
