@@ -1,31 +1,27 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-const menu = [
-{
-  name: "Fantas Magoria",
-  colloquial: "Fish Plant",
-  pricePerPallet: "$399",
-  pricePerPlant: "$23"
-}
-]
-
-function Inventory() {
+function Inventory(props) {
 
   const currentlyVisibleState = 
-    menu.map(plant => 
-      <React.Fragment>
+    props.inventory.map(plant => 
+      <div key={plant.id}>
         <p>{plant.colloquial}</p>
         <p>{plant.pricePerPallet}</p>
         <p>{plant.pricePerPlant}</p>
-      </React.Fragment>
+      </div>
       )
-      
+
   return (
     <React.Fragment>
       <h3>Inventory</h3>
       {currentlyVisibleState}
     </React.Fragment>
   );
+}
+
+Inventory.propTypes = {
+  inventory: PropTypes.array
 }
 
 export default Inventory;
