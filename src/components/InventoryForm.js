@@ -1,26 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
+import ReusableForm from "./ReusableForm";
 
 function InventoryForm(props) {
 
-  const [palletQuantity, setPalletQuantity] = useState("");
   return (
-    <>
-      <form onSubmit={handleNewInventoryFormSubmission}>
-        <label htmlFor="name">Latin Name:</label>
-        <input type="text" id="name" name="latin-name" required />
-        
-        <label htmlFor="colloquial">Colloquial Name:</label>
-        <input type="text" id="colloquial" name="colloquial-name" required />
-
-        <label htmlFor="quantity">Quantity:</label>
-        <input type="text" id="quantity" name="quantity" onChange={(event) => setPalletQuantity(event.target.value)}></input>
-
-        <button type="submit">Submit</button>
-
-      </form>
-    </>
+    <React.Fragment>
+      <ReusableForm formSubmissionHandler={handleNewInventoryFormSubmission}
+                    buttonText="Submit" />
+    </React.Fragment>
   );
 
   function handleNewInventoryFormSubmission(event) {
@@ -28,8 +17,7 @@ function InventoryForm(props) {
     const newInventoryItem = {
       name: event.target.name.value,
       colloquial: event.target.colloquial.value,
-      palletQuantity: palletQuantity, 
-      plantQuantity: palletQuantity * 130, 
+      quantity: event.target.quantity.value, 
       id: v4()
     };
 
