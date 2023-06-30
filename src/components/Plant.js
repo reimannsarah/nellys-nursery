@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Plant(props) {
   return(
     <React.Fragment>
-      <div onClick = {() => props.whenItemClicked(props.id)}>
+      <div onClick = {() => props.whenPlantClicked(props.id)}>
         <h4>Latin name: {props.name}</h4>
         <p>Colloquial Name: {props.colloquial}</p>
         <p>Pallet Quantity: {props.palletQuantity}</p>
@@ -19,7 +19,7 @@ Plant.propTypes = {
   name: PropTypes.string,
   colloquial: PropTypes.string,
   palletQuantity: PropTypes.string,
-  whenItemClicked: PropTypes.func,
+  whenPlantClicked: PropTypes.func,
   id: PropTypes.string
 }
 
