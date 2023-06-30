@@ -1,16 +1,22 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Plant from "./Plant";
 
 function Inventory(props) {
 
   const currentlyVisibleState = 
-    props.inventory.map(plant => 
-      <div key={plant.id}>
-        <p>{plant.colloquial}</p>
-        <p>{plant.pricePerPallet}</p>
-        <p>{plant.pricePerPlant}</p>
-      </div>
-      )
+  props.inventory.map((plant) => 
+  <div key={plant.id}>
+    <Plant whenItemClicked={props.onItemSelect}
+      name={plant.name}
+      colloquial={plant.colloquial}
+      palletQuantity={plant.palletQuantity}
+      plantQuantity={plant.plantQuantity}
+      key={plant.id}
+      id={plant.id}
+      />
+    </div>
+  )
 
   return (
     <React.Fragment>
@@ -21,7 +27,8 @@ function Inventory(props) {
 }
 
 Inventory.propTypes = {
-  inventory: PropTypes.array
+  inventory: PropTypes.array,
+  onItemSelect: PropTypes.func
 }
 
 export default Inventory;
