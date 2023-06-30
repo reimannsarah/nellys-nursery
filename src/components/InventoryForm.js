@@ -1,22 +1,24 @@
 import React from "react";
+import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
 function InventoryForm(props) {
   return (
     <>
-      <form action={handleNewInventoryFormSubmission}>
-        <label for="latin=name">Latin Name:</label>
-        <input type="text" id="latin-name" name="latin-name" required />
+      <form onSubmit={handleNewInventoryFormSubmission}>
+        <label htmlFor="name">Latin Name:</label>
+        <input type="text" id="name" name="latin-name" required />
         
-        <label for="colloquial-name">Colloquial Name:</label>
-        <input type="text" id="colloquial-name" name="colloquial-name" required />
+        <label htmlFor="colloquial">Colloquial Name:</label>
+        <input type="text" id="colloquial" name="colloquial-name" required />
 
-        <label for="pricePerPallet">Price Per Pallet (130 plants):</label>
+        <label htmlFor="pricePerPallet">Price Per Pallet (130 plants):</label>
         <input type="text"id="pricePerPallet" name="pricePerPallet"></input>
         
-        <label for="pricePerPlant">Price Per Plant:</label>
+        <label htmlFor="pricePerPlant">Price Per Plant:</label>
         <input type="text"id="pricePerPlant" name="pricePerPlant"></input>
 
-        <label for="quantity">Quantity:</label>
+        <label htmlFor="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity"></input>
 
         <button type="submit">Submit</button>
@@ -32,9 +34,14 @@ function InventoryForm(props) {
       colloquial: event.target.colloquial.value,
       pricePerPallet: event.target.pricePerPallet.value,
       pricePerPlant: event.target.pricePerPlant.value,
-      palletQuantity: event.target.quantity.value
+      palletQuantity: event.target.quantity.value,
+      id: v4()
     });
   }
+}
+
+InventoryForm.propTypes = {
+  onNewInventoryCreation: PropTypes.func
 }
 
 export default InventoryForm;
