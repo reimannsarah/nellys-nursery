@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 
 function InventoryForm(props) {
+
+  const [palletQuantity, setPalletQuantity] = useState("");
   return (
     <>
       <form onSubmit={handleNewInventoryFormSubmission}>
@@ -19,7 +21,7 @@ function InventoryForm(props) {
         <input type="text"id="pricePerPlant" name="pricePerPlant"></input>
 
         <label htmlFor="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity"></input>
+        <input type="text" id="quantity" name="quantity" onChange={(event) => setPalletQuantity(event.target.value)}></input>
 
         <button type="submit">Submit</button>
 
@@ -29,14 +31,18 @@ function InventoryForm(props) {
 
   function handleNewInventoryFormSubmission(event) {
     event.preventDefault();
-    props.onNewInventoryCreation({
+    const newInventoryItem = {
       name: event.target.name.value,
       colloquial: event.target.colloquial.value,
       pricePerPallet: event.target.pricePerPallet.value,
       pricePerPlant: event.target.pricePerPlant.value,
-      palletQuantity: event.target.quantity.value,
+      palletQuantity: palletQuantity, 
+      plantQuantity: palletQuantity * 130, 
       id: v4()
-    });
+    };
+
+    props.onNewInventoryCreation(newInventoryItem);
+    
   }
 }
 
