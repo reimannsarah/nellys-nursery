@@ -7,8 +7,7 @@ function Plant(props) {
       <div onClick = {() => props.whenPlantClicked(props.id)}>
         <h4>Latin name: {props.name}</h4>
         <p>Colloquial Name: {props.colloquial}</p>
-        <p>Pallet Quantity: {props.palletQuantity}</p>
-        <p>Plant Quantity: {props.plantQuantity}</p>
+        <p>Quantity Available: {props.quantity}</p>
         <hr/>
       </div>
     </React.Fragment>
