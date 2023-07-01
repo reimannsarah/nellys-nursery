@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 function NavBar(props) {
   return (
     <div className="navbar">
-      <p>Home</p>
+      <button onClick={props.onMenuClick}>Menu</button>
       <button onClick={props.onInventoryClick}>Inventory</button>
-      <button>Cart</button>
     </div>
   );
 }
 
 NavBar.propTypes = {
-  onInventoryClick: PropTypes.func
+  onInventoryClick: PropTypes.func,
+  onMenuClick: PropTypes.func
 }
 
 export default NavBar;

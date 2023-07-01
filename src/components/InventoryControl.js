@@ -4,6 +4,7 @@ import InventoryForm from "./InventoryForm";
 import NavBar from './NavBar';
 import InventoryDetail from "./InventoryDetail";
 import EditInventoryForm from "./EditInventoryForm";
+import Menu from "./Menu";
 
 class InventoryControl extends React.Component {
 
@@ -13,7 +14,8 @@ class InventoryControl extends React.Component {
       inventoryFormVisibleOnPage: false,
       inventory: [],
       selectedPlant: null,
-      editFormVisibleOnPage: false
+      editFormVisibleOnPage: false,
+      menuVisibleOnPage: false
     }
   }
 
@@ -24,7 +26,10 @@ class InventoryControl extends React.Component {
         inventoryFormVisibleOnPage: false,
         currentPlant: null
       });
-    } else {
+    } else if (this.state.menuVisibleOnPage) {
+      this.setState({menuVisibleOnPage: false,
+                      inventoryFormVisibleOnPage: true})
+    }else {
       this.setState((prevState => ({
         inventoryFormVisibleOnPage: !prevState.inventoryFormVisibleOnPage
       })));
@@ -33,6 +38,10 @@ class InventoryControl extends React.Component {
 
   handleInventoryClick = () => {
     this.setState({ inventoryFormVisibleOnPage: false })
+  }
+
+  handleMenuClick = () => {
+    this.setState({menuVisibleOnPage: true})
   }
 
   handleChangingSelectedPlant = (id) => {
@@ -94,7 +103,10 @@ class InventoryControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.editFormVisibleOnPage) {
+    if (this.state.menuVisibleOnPage) {
+      currentlyVisibleState = <Menu inventory={this.state.inventory} />
+      buttonText="Add to inventory"
+    } else if (this.state.editFormVisibleOnPage) {
       currentlyVisibleState = <EditInventoryForm plant={this.state.selectedPlant} onEditPlant={this.handleEditingInventoryPlant} />
       buttonText = "Back";
     } else if (this.state.selectedPlant != null) {
@@ -110,7 +122,7 @@ class InventoryControl extends React.Component {
 
     return (
       <>
-        <NavBar onInventoryClick={this.handleInventoryClick} />
+        <NavBar onInventoryClick={this.handleInventoryClick} onMenuClick={this.handleMenuClick}  />
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
       </>
