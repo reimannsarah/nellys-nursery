@@ -8,8 +8,7 @@ function InventoryDetail(props) {
       <h1>Plant Details</h1>
       <h3>{plant.colloquial}</h3>
       <p>Latin Name: {plant.name}</p>
-      <p>Quantity of Pallets in Stock: {plant.palletQuantity}</p>
-      <p>Quantity of Plants in Stock: {plant.plantQuantity}</p>
+      <p>Quantity of Plants in Stock: {plant.quantity}</p>
       <button onClick={() => onDeleteClick(plant.id)}>Delete</button>
       <button onClick={props.onEditClick}>Edit</button>
       <button onClick={onSellClick}>Sell Plant</button>
