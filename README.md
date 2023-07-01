@@ -2,8 +2,6 @@
 
 ### by Sarah Reimann
 
-![gif of app in motion](./src/img/example.gif)
-
 ## Description
 
 An app for a plant nursery to keep track of inventory. Use can add, delete, and edit plants in inventory. 
@@ -16,7 +14,7 @@ An app for a plant nursery to keep track of inventory. Use can add, delete, and 
 * _Javascript_
 
 ## Component Diagram
-![photo of app design](./src/img/punch-scrunch.png)
+![photo of app design](./src/img/component-diagram.png)
 
 ## Setup Instructions
 1. Clone this repo to your desktop
@@ -25,7 +23,9 @@ An app for a plant nursery to keep track of inventory. Use can add, delete, and 
 4. Run ```npm start``` in the project's root directory to start the app 
 
 ## Known Bugs 
-* 
+* _Back and Inventory buttons don't work when in the detail or Menu view_
+* _DOM does not reflect update when quantity of plant is decremented_
+* _Probably a lot of other things at this point, its  WIP_
 
 # License
 
