@@ -11,7 +11,7 @@ function EditInventoryForm(props) {
     props.onEditPlant({
       name: event.target.name.value,
       colloquial: event.target.colloquial.value,
-      quantity: event.target.quantity.value, 
+      quantity: parseInt(event.target.quantity.value), 
       id: plant.id
     })
   }
