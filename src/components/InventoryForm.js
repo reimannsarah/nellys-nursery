@@ -17,10 +17,9 @@ function InventoryForm(props) {
     const newInventoryItem = {
       name: event.target.name.value,
       colloquial: event.target.colloquial.value,
-      quantity: event.target.quantity.value, 
+      quantity: parseInt(event.target.quantity.value), 
       id: v4()
     };
-
     props.onNewInventoryCreation(newInventoryItem);
 
   }

@@ -11,7 +11,7 @@ function InventoryDetail(props) {
       <p>Quantity of Plants in Stock: {plant.quantity}</p>
       <button onClick={() => onDeleteClick(plant.id)}>Delete</button>
       <button onClick={props.onEditClick}>Edit</button>
-      <button onClick={onSellClick}>Sell Plant</button>
+      <button onClick={() => onSellClick(plant.id)}>Sell Plant</button>
     </React.Fragment>
   );
 }
