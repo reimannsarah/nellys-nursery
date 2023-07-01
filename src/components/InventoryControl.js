@@ -53,26 +53,9 @@ class InventoryControl extends React.Component {
   }
 
   handleEditClick = () => {
+    console.log("handle edit ticket reached")
     this.setState({editFormVisibleOnPage: true});
   }  
-
-  handleSellingPlantClick = (id) => {
-    const updatedInventory = this.state.inventory.map((plant) => {
-      if (plant.id === id) {
-        return {
-          ...plant,
-          plantQuantity: plant.plantQuantity - 1
-        };
-      }
-      return plant;
-    });
-  
-    this.setState({
-      inventory: updatedInventory
-    });
-    console.log(this.state.inventory[id])
-  }
-  
 
   handleEditingInventoryPlant = (plantToEdit) => {
     const editedInventory = this.state.inventory.filter(plant => plant.id !== this.state.selectedPlant.id).concat(plantToEdit);
@@ -83,18 +66,25 @@ class InventoryControl extends React.Component {
     })
   }
 
+  handleSellingPlantClick = (id) => {
+    const thisPlant = this.state.inventory.filter(plant => plant.id === id)[0];
+    this.setState()
+  }
+  
+
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     
-    if (this.state.selectedPlant != null) {
+    if (this.state.editFormVisibleOnPage) {
+      currentlyVisibleState = <EditInventoryForm plant={this.state.selectedPlant} onEditPlant={this.handleEditingInventoryPlant} />
+      buttonText="Back";
+    } else if (this.state.selectedPlant != null) {
       currentlyVisibleState = <InventoryDetail plant={this.state.selectedPlant} onDeleteClick={this.handleDeleteFromInventory} onEditClick={this.handleEditClick} onSellClick={this.handleSellingPlantClick}/>
       buttonText="Back";
     } else if (this.state.inventoryFormVisibleOnPage) {
       currentlyVisibleState = <InventoryForm onNewInventoryCreation={this.handleAddingToInventory} />
-      buttonText="Back";
-    } else if (this.state.editFormVisibleOnPage) {
-      currentlyVisibleState = <EditInventoryForm plant={this.state.selectedPlant} onEditSubmission={this.handleEditingInventoryPlant} />
       buttonText="Back";
     } else {
       currentlyVisibleState = <Inventory inventory={this.state.inventory} onPlantSelect={this.handleChangingSelectedPlant}/>
