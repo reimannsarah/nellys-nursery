@@ -10,8 +10,7 @@ function Inventory(props) {
     <Plant whenPlantClicked={props.onPlantSelect}
       name={plant.name}
       colloquial={plant.colloquial}
-      palletQuantity={plant.palletQuantity}
-      plantQuantity={plant.plantQuantity}
+      quantity={plant.quantity}
       key={plant.id}
       id={plant.id}
       />
