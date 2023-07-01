@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import ReusableForm from "./ReusableForm";
 import PropTypes from 'prop-types';
 
@@ -19,6 +19,7 @@ function EditInventoryForm(props) {
   return (
     <React.Fragment>
       <ReusableForm 
+        formSubmissionHandler={handleEditInventoryFormSubmission}
         buttonText="Edit" />
     </React.Fragment>
   );
