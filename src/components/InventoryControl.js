@@ -109,13 +109,13 @@ class InventoryControl extends React.Component {
       buttonText="Add to inventory"
     } else if (this.state.editFormVisibleOnPage) {
       currentlyVisibleState = <EditInventoryForm plant={this.state.selectedPlant} onEditPlant={this.handleEditingInventoryPlant} />
-      buttonText = "Back";
+      buttonText = "Back to Inventory";
     } else if (this.state.selectedPlant != null) {
       currentlyVisibleState = <InventoryDetail plant={this.state.selectedPlant} onDeleteClick={this.handleDeleteFromInventory} onEditClick={this.handleEditClick} onSellClick={this.handleSellingPlantClick} />
-      buttonText = "Back";
+      buttonText = "Back to Inventory";
     } else if (this.state.inventoryFormVisibleOnPage) {
       currentlyVisibleState = <InventoryForm onNewInventoryCreation={this.handleAddingToInventory} />
-      buttonText = "Back";
+      buttonText = "Back to Inventory";
     } else {
       currentlyVisibleState = <Inventory inventory={this.state.inventory} onPlantSelect={this.handleChangingSelectedPlant} />
       buttonText = "Add plant to inventory"
