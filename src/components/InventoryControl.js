@@ -24,7 +24,7 @@ class InventoryControl extends React.Component {
     if (this.state.selectedPlant != null) {
       this.setState({
         inventoryFormVisibleOnPage: false,
-        currentPlant: null
+        selectedPlant: null
       });
     } else if (this.state.menuVisibleOnPage) {
       this.setState({menuVisibleOnPage: false,
@@ -37,11 +37,14 @@ class InventoryControl extends React.Component {
   }
 
   handleInventoryClick = () => {
-    this.setState({ inventoryFormVisibleOnPage: false })
+    this.setState({ inventoryFormVisibleOnPage: false,
+                    selectedPlant: null,
+                  menuVisibleOnPage: false})
   }
 
   handleMenuClick = () => {
-    this.setState({menuVisibleOnPage: true})
+    this.setState({menuVisibleOnPage: true,
+                    selectedPlant: null})
   }
 
   handleChangingSelectedPlant = (id) => {
@@ -80,21 +83,18 @@ class InventoryControl extends React.Component {
   }
 
   handleSellingPlantClick = (id) => {
-    const updatedInventory = this.state.inventory.map(plant => {
-      if (plant.id === id) {
-        return {
-          ...plant,
-          quantity: plant.quantity - 1
-        };
-      }
-      console.log(typeof (plant.quantity))
-      console.log(plant.quantity)
-      return plant;
-    });
+    const currentPlant = this.state.inventory.filter(plant => plant.id === id)[0]
+    if (currentPlant.quantity > 0) {
+    const newPlant = {...currentPlant, quantity: currentPlant.quantity - 1 }
+    const updatedInventory = this.state.inventory.filter(plant => plant.id !== currentPlant.id).concat(newPlant)
 
-    this.setState({ inventory: updatedInventory }, () => console.log(this.state.inventory));
-    console.log("reached!")
-    console.log(this.state.inventory)
+    this.setState({ inventory: updatedInventory, selectedPlant: newPlant });
+    } else {
+      const newPlant = {...currentPlant, quantity: "No more in stock" }
+    const updatedInventory = this.state.inventory.filter(plant => plant.id !== currentPlant.id).concat(newPlant)
+
+    this.setState({ inventory: updatedInventory, selectedPlant: newPlant });
+    }
   }
 
 
