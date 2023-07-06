@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 :root {
   --blue: #2D7DD2;
   --green: #97CC04;
@@ -8,6 +10,7 @@
 
 body {
   background-color: var(--purple);
+  font-family: "Roboto";
 }
 
 .header {
@@ -54,6 +57,13 @@ button {
   background-color: var(--orange);
   color: white;
   border: 1px solid white;
+}
+
+input {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
 }
 
 button:hover {
