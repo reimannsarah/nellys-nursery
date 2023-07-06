@@ -49,7 +49,8 @@ class InventoryControl extends React.Component {
 
   handleChangingSelectedPlant = (id) => {
     const currentPlant = this.state.inventory.filter(plant => plant.id === id)[0];
-    this.setState({ selectedPlant: currentPlant });
+    this.setState({ selectedPlant: currentPlant,
+                    menuVisibleOnPage: false});
   }
 
   handleAddingToInventory = (newPlant) => {
@@ -104,7 +105,7 @@ class InventoryControl extends React.Component {
     let buttonText = null;
 
     if (this.state.menuVisibleOnPage) {
-      currentlyVisibleState = <Menu inventory={this.state.inventory} />
+      currentlyVisibleState = <Menu inventory={this.state.inventory} onPlantSelect={this.handleChangingSelectedPlant} />
       buttonText="Add to inventory"
     } else if (this.state.editFormVisibleOnPage) {
       currentlyVisibleState = <EditInventoryForm plant={this.state.selectedPlant} onEditPlant={this.handleEditingInventoryPlant} />
