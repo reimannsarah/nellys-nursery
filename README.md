@@ -2,11 +2,14 @@
 
 ### by Sarah Reimann
 
+![photo of app design](./src/img/example.gif)
+
+
 ## Description
 
 An app for a plant nursery to keep track of inventory. Use can add, delete, and edit plants in inventory. 
 
-## Technologies
+## Technologies Used
 * _React_
 * _JSX_
 * _webpack_
@@ -16,7 +19,7 @@ An app for a plant nursery to keep track of inventory. Use can add, delete, and 
 ## Component Diagram
 ![photo of app design](./src/img/component-diagram.png)
 
-## Setup Instructions
+## Setup/Installation Instructions
 1. Clone this repo to your desktop
 2. Open your terminal (e.g. Terminal of Gitbash) and navigate to this project's directory, "punch-scrunch-designs".
 3. Run ```npm install``` in the project's root directory to install necessary dependencies.
