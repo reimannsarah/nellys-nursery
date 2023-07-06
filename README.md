@@ -2,7 +2,6 @@
 
 ### by Sarah Reimann
 
-![photo of app design](./src/img/example.gif)
 
 
 ## Description
