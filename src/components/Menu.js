@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function Menu(props) {
   if (props.inventory.length !== 0) {
@@ -7,7 +8,7 @@ function Menu(props) {
         <h3>Menu</h3>
         <ul>
           {props.inventory.map(plant =>
-            <li key={plant.id}>{plant.colloquial} - {plant.name}</li>
+            <li key={plant.id} onClick={() => props.onPlantSelect(plant.id)} >{plant.colloquial} - {plant.name}</li>
           )}
         </ul>
       </React.Fragment>
@@ -20,6 +21,14 @@ function Menu(props) {
       </React.Fragment>
     )
   }
+}
+
+Menu.propTypes = {
+  key: PropTypes.string,
+  id: PropTypes.string,
+  onPlantSelect: PropTypes.func,
+  colloquial: PropTypes.string,
+  name: PropTypes.string
 }
 
 export default Menu;
