@@ -1,6 +1,66 @@
+:root {
+  --blue: #2D7DD2;
+  --green: #97CC04;
+  --yellow: #EEB902;
+  --orange: #F45D01;
+  --purple: #E2CFEA;
+}
+
+body {
+  background-color: var(--purple);
+}
+
+.header {
+  display: flex;
+  margin: 0 auto;
+}
+
+
+#plant-gif {
+  width: 100px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-evenly;
+  background-color: var(--yellow);
+  padding: 10px;
+}
+
+.navbar button {
+  background: none;
+  border: none;
+}
+
+.menu-list {
+  background-color: var(--blue);
+  display: block;
+  margin: 10 auto;
+  width: 50%;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+}
+
+.menu-list li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+button {
+  padding: 5px;
+  border-radius: 6px;
+  background-color: var(--orange);
+  color: white;
+  border: 1px solid white;
+}
+
+button:hover {
+  transition-duration: 0.2s;
+  background-color: var(--purple);
+  color: var(--orange);
+  border: 1px solid var(--orange);
 }
 
 @keyframes App-logo-spin {
