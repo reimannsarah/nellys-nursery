@@ -6,9 +6,12 @@ function Menu(props) {
     return (
       <React.Fragment>
         <h3>Menu</h3>
-        <ul>
+        <ul className="menu-list">
           {props.inventory.map(plant =>
-            <li key={plant.id} onClick={() => props.onPlantSelect(plant.id)} >{plant.colloquial} - {plant.name}</li>
+          <div key={plant.id} >
+            <li onClick={() => props.onPlantSelect(plant.id)} ><span className="menu-name">{plant.colloquial}</span><span className="menu-quantity"> Available: {plant.quantity}</span> </li>
+            <hr/>
+          </div>
           )}
         </ul>
       </React.Fragment>
